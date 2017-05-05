@@ -17,16 +17,18 @@ public class linecounter {
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-4/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-5-1/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-6/merge.txt");
-	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-8/merge.txt");
+//	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-8/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod bio2rdf/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod Openbiomed/merge.txt");
+	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/decoded.txt");
 	LineNumberReader  lnr = new LineNumberReader(new FileReader(inputFile));
 	lnr.skip(Long.MAX_VALUE);
 	long linecount = lnr.getLineNumber() + 1; //Add 1 because line index starts at 0
 	// Finally, the LineNumberReader object should be closed to prevent resource leak
 	lnr.close();
 	BufferedReader reader = null;
+	long starttime = System.nanoTime();
 	double i = 0;
 	int z = 0;
 	int y = 0;
@@ -41,6 +43,7 @@ public class linecounter {
 	boolean m = false;
 	boolean n = false;
 	boolean o = false;
+	System.out.println("File read in completed, execution started at "+LocalDateTime.now());
 	try{
 		reader = new BufferedReader(new FileReader(inputFile));
 		while(reader.ready()) {
@@ -136,6 +139,9 @@ public class linecounter {
 				e.printStackTrace();
 			}
 	}
+	long endtime = System.nanoTime();
+	long duration = ((endtime - starttime)/1000000000);
+	System.out.println("Done collecting!"+ " this took " + duration+ " seconds.");
 }
 }
 	

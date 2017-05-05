@@ -20,8 +20,10 @@ import java.util.regex.Pattern;
 public class Decoder {
 
 	public static void main(String[] args) throws IOException {
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/merge.txt");
-		File outputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/decoded.txt");		
+//		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/merge.txt");
+//		File outputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/decoded.txt");		
+		File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/merge.txt");
+		File outputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/decoded.txt");
 		FileOutputStream fos = new FileOutputStream(outputFile);		
 		BufferedReader reader = null;
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));		
@@ -47,8 +49,9 @@ public class Decoder {
 			while(reader.ready()) {
 				i++;
 				String line = reader.readLine();
-				
-				try {
+				//catch exception für decoder Fehler
+				try { 
+					//decodieren der URLs
 					line = URLDecoder.decode(line, "UTF-8");
 				} catch (java.lang.IllegalArgumentException e) {
 					
@@ -57,7 +60,7 @@ public class Decoder {
 					writer.write(line);
 					writer.newLine();
 									
-						
+				//Prozentanzeige		
 				if((i/linecount)>=0.10f && !f == true){	
 					System.out.println("10% done at "+ (LocalDateTime.now()));
 					f = true;

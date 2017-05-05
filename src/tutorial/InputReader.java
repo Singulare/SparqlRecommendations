@@ -15,11 +15,11 @@ public class InputReader {
 	public static void main(String[] args) throws FileNotFoundException, Exception {
 		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod bio2rdf/merge.txt");
 		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-3/merge.txt");
-		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/merge.txt");
+		File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/merge.txt");
 		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod Openbiomed/merge.txt");
 		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/merge.txt");
 		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-3/rejects.txt");
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/decoded.txt");	
+//		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/clean.txt");	
 //		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/rejects.txt");	
 		
 		long i = 0;
@@ -30,11 +30,11 @@ public class InputReader {
 			while(reader.ready()) {
 				
 				String line = reader.readLine();
-				Pattern pattern2 = Pattern.compile(".*(construct|CONSTRUCT|Construct).*");
-				Matcher matcher2 = pattern2.matcher(line);
-				if (matcher2.find()){
+//				Pattern pattern2 = Pattern.compile(".*(construct|CONSTRUCT|Construct).*");
+//				Matcher matcher2 = pattern2.matcher(line);
+//				if (matcher2.find()){
 				System.out.println(line);
-				}
+//				}
 				if (++i==400005) break;
 								  } 
 		}catch (FileNotFoundException e) {

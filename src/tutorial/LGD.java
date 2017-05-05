@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
-import java.net.URLDecoder;
 import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,11 +19,11 @@ import java.util.regex.Pattern;
 public class LGD {
 
 	public static void main(String[] args) throws IOException {
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/clean.txt");
-		File outputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/cleanER.txt");
-		
+		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/decoded.txt");
+		File outputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/clean.txt");
+		File outputFile2 = new File("D:/Usewod/Completed Usewod Counting/lgd/rejects.txt");
 		FileOutputStream fos = new FileOutputStream(outputFile);
-		FileOutputStream fos2 = new FileOutputStream(outputFile);
+		FileOutputStream fos2 = new FileOutputStream(outputFile2);
 		BufferedReader reader = null;
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
 		BufferedWriter writer2 = new BufferedWriter(new OutputStreamWriter(fos2));
@@ -46,26 +45,41 @@ public class LGD {
 		boolean o = false;
 		System.out.println("File read in completed, execution started at "+LocalDateTime.now());
 		try {
+			//TODO
+			//Vielleicht in one line konvertieren ?
 			reader = new BufferedReader(new FileReader(inputFile));
 			while(reader.ready()) {
 				i++;
 				String line = reader.readLine();
-				Pattern pattern = Pattern.compile(".*\\&query=SELECT\\s(.*)");
+				Pattern pattern = Pattern.compile(".?\\s?HTTP.+");
+				Pattern pattern1 = Pattern.compile("\\s*PREFIX\\s+");
+				Pattern pattern2 = Pattern.compile(".*(select|SELECT|Select).*");
+				Pattern pattern3 = Pattern.compile(".*(ask|ASK|Ask).*");
+				Pattern pattern4 = Pattern.compile(".*(construct|CONSTRUCT|Construct).*");
+				Pattern pattern5 = Pattern.compile(".*(describe|DESCRIBE|Describe).*");
 				Matcher matcher = pattern.matcher(line);
-				//TODO 
-				//Pattern für rejects (sollte ähnlich zu zweiten von bio2rdf sein)
-				// von "Select" bis HTTP
-				//evtl vorher decodieren und dann regexen ?
-				if (matcher.find()) {
-					String query = matcher.group(1);
-					query = URLDecoder.decode(query, "UTF-8");
-					writer.write("Select " + query);
+				Matcher matcher1 = pattern1.matcher(line);
+				Matcher matcher2 = pattern2.matcher(line);
+				Matcher matcher3 = pattern3.matcher(line);
+				Matcher matcher4 = pattern4.matcher(line);
+				Matcher matcher5 = pattern5.matcher(line);
+				//zuerst gewünschte Pattern rausmatchen
+				if (matcher2.find()||matcher3.find()||matcher4.find()||matcher5.find()) {
+					
+					writer.write(line);
 					writer.newLine();
 									}
-						else  { 
-							writer.write(line);
-							writer.newLine();							 
+				//dann ungewollte lines raus (PREFIX und HTTP)
+						else  if(matcher.find()||matcher1.find()){ 
+							writer2.write(line);
+							writer2.newLine();							 
+							 }else
+								 //rest wird normal hinzugefügt
+							 {
+								 writer.write(line);
+								writer.newLine();
 							 }
+				//Prozentanzeige
 				if((i/linecount)>=0.10f && !f == true){	
 					System.out.println("10% done at "+ (LocalDateTime.now()));
 					f = true;
@@ -123,7 +137,7 @@ public class LGD {
 				try {
 					reader.close();
 					writer.close();
-					
+					writer2.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
