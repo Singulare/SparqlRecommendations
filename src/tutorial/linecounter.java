@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class linecounter {
 	public static void main(String[] args) throws IOException {
-//	File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/merge.txt");
+	File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/cleanER.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-3/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-4/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-5-1/merge.txt");
@@ -21,7 +21,7 @@ public class linecounter {
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod bio2rdf/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/merge.txt");
 //	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod Openbiomed/merge.txt");
-	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/decoded.txt");
+//	File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/decoded.txt");
 	LineNumberReader  lnr = new LineNumberReader(new FileReader(inputFile));
 	lnr.skip(Long.MAX_VALUE);
 	long linecount = lnr.getLineNumber() + 1; //Add 1 because line index starts at 0

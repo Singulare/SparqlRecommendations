@@ -1,64 +1,64 @@
 Overview of all data bases
 
-				LGD			decoded		rejectsOfdecoded	cleanDecoded
-Number of Lines			1929694		11854347	2459190		9395158
-Number of SELECT		1639889		1639961		0			1639961
-Number of ASK			25052		25138		0			25138
-Number of CONSTRUCT		266329		266329		0			266329
-Number of DESCRIBE		141		185				0			185
+						LGD			decoded		rejectsOfdecoded	cleanDecoded	cleanER
+Number of Lines			1929694		11854347	2459190				9395158			8188365
+Number of SELECT		1639889		1639961		0					1639961			697810	
+Number of ASK			25052		25138		0					25138			24686
+Number of CONSTRUCT		266329		266329		0					266329			1557
+Number of DESCRIBE		141			185			0					185				184
 						
-				Bio2RDF
+						Bio2RDF
 Number of Lines  		192082
 Number of Select 		179370
 Number of ASK 			367
-Number of Construct  		12413
-Number of Describe  		0
+Number of Construct  	12413
+Number of Describe  	0
 
-				SWDF		decoded
+						SWDF			decoded
 Number of Lines  		27901112		77779506
 Number of Select  		11157745		11161444
 Number of ASK 			117337			118971
-Number of Construct  		52712		54142
-Number of Describe  		2648964		2649025				
+Number of Construct  	52712			54142
+Number of Describe  	2648964			2649025				
 
-				Openbiomed
+						Openbiomed
 Number of Lines  		2890583
 Number of Select  		31951
 Number of ASK 			22501
-Number of Construct  		20364
-Number of Describe  		830107
+Number of Construct  	20364
+Number of Describe  	830107
 
-				DBP 3-3
+						DBP 3-3
 Number of Lines 		9508983
 Number of Select 		2879961
 Number of ASK			77077
-Number of Construct 		17414
+Number of Construct 	17414
 Number of Describe 		5672
 
-				DBP 3-4
+						DBP 3-4
 Number of Lines 		15114251
 Number of Select 		2480983
 Number of ASK			210286
-Number of Construct 		51688
+Number of Construct 	51688
 Number of Describe 		15505
 
-				DBP 3-5-1
+						DBP 3-5-1
 Number of Lines 		3182390	
 Number of Select 		2948783
 Number of ASK			181499
-Number of Construct 		20116
+Number of Construct 	20116
 Number of Describe 		3024
 
-				DBP 3-6
+						DBP 3-6
 Number of Lines 		8429868
 Number of Select 		7994806
 Number of ASK			368414
-Number of Construct 		11060
+Number of Construct 	11060
 Number of Describe 		39917
 
-				DBP 3-8
+						DBP 3-8
 Number of Lines 		12044166	
 Number of Select 		11360418
 Number of ASK			272364
-Number of Construct 		166106
+Number of Construct 	166106
 Number of Describe 		38376				
