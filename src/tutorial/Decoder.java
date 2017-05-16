@@ -19,10 +19,8 @@ import java.time.LocalDateTime;
 public class Decoder {
 
 	public static void main(String[] args) throws IOException {
-//		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/merge.txt");
-//		File outputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/decoded.txt");		
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/merge.txt");
-		File outputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/decoded.txt");
+		File inputFile = new File(args[0]);
+		File outputFile = new File(args[1]);
 		FileOutputStream fos = new FileOutputStream(outputFile);		
 		BufferedReader reader = null;
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));		

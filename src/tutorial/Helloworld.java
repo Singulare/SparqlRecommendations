@@ -38,7 +38,7 @@ public class Helloworld {
 		
 		r.addProperty( p,  "hello world", XSDDatatype.XSDstring);
 		m.write( System.out, "N-Triples");
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod bio2rdf/merge.txt");
+		File inputFile = new File(args[0]);
 		BufferedReader reader = null;
 		BGPVisitor bgpVisitor = new BGPVisitor();
 		try {

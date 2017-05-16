@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
 public class SWDF {
 
 	public static void main(String[] args) throws IOException {
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/decoded.txt");
-		File outputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/clean.txt");
-		File outputFile2 = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/rejects.txt");
+		File inputFile = new File(args[0]); //Ausgangsfile merge
+		File outputFile = new File(args[1]); //Outputfile für gefilterte Ergebnisse
+		File outputFile2 = new File(args[2]); //Outputfile für Ausschuss
 		FileOutputStream fos = new FileOutputStream(outputFile);
 		FileOutputStream fos2 = new FileOutputStream(outputFile2);
 		BufferedReader reader = null;
@@ -34,15 +34,6 @@ public class SWDF {
 		// Finally, the LineNumberReader object should be closed to prevent resource leak
 		lnr.close();
 		double i = 0;
-		boolean f = false;
-		boolean g = false;
-		boolean h = false;
-		boolean j = false;
-		boolean k = false;
-		boolean l = false;
-		boolean m = false;
-		boolean n = false;
-		boolean o = false;
 		System.out.println("File read in completed, execution started at "+LocalDateTime.now());
 		
 		try {
@@ -81,50 +72,8 @@ public class SWDF {
 									writer.newLine();
 								 }
 					//Prozentanzeige
-					if((i/linecount)>=0.10f && !f == true){	
-						System.out.println("10% done at "+ (LocalDateTime.now()));
-						f = true;
-					continue;
-					}
-					if((i/linecount)>=0.20f && !g ==true){
-						System.out.println("20% done at "+ (LocalDateTime.now()));
-						g = true;
-						continue;
-					}
-					if((i/linecount)>=0.30f && !h ==true){
-						System.out.println("30% done at "+ (LocalDateTime.now()));
-						h = true;
-						continue;
-					}
-					if((i/linecount)>=0.40f && !j ==true){
-						System.out.println("40% done at "+ (LocalDateTime.now()));
-						j = true;
-						continue;
-					}
-					if((i/linecount)>=0.50f && !k ==true){
-						System.out.println("50% done at "+ (LocalDateTime.now()));
-						k = true;
-						continue;
-					}
-					if((i/linecount)>=0.60f && !l ==true){
-						System.out.println("60% done at "+ (LocalDateTime.now()));
-						l = true;
-						continue;
-					}
-					if((i/linecount)>=0.70f && !m ==true){
-						System.out.println("70% done at "+ (LocalDateTime.now()));
-						m = true;
-						continue;
-					}
-					if((i/linecount)>=0.80f && !n ==true){
-						System.out.println("80% done at "+ (LocalDateTime.now()));
-						n = true;
-						continue;
-					}
-					if((i/linecount)>=0.90f && !o ==true){
-						System.out.println("90% done at "+ (LocalDateTime.now()));
-						o = true;
-						continue;
+					if(i%((long)linecount/10)==0) {
+						System.out.println(((int)i/linecount*100) + "% done at "+ (LocalDateTime.now()));
 					}
 									  } 
 			}catch (FileNotFoundException e) {

@@ -12,15 +12,8 @@ import java.io.IOException;
 
 public class InputReader {
 	public static void main(String[] args) throws FileNotFoundException, Exception {
-		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod bio2rdf/merge.txt");
-		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-3/merge.txt");
-//		File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod swdf/merge.txt");
-		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod Openbiomed/merge.txt");
-		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/merge.txt");
-		//File inputFile = new File("D:/Usewod/Completed Usewod Counting/DBP/3-3/rejects.txt");
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/cleanEST.txt");	
-//		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/rejects.txt");	
-		
+		File inputFile = new File(args[0]);			
+		int endline =Integer.parseInt(args[1]);
 		long i = 0;
 		BufferedReader reader = null;
 			long starttime = System.nanoTime();
@@ -34,7 +27,7 @@ public class InputReader {
 //				if (matcher2.find()){
 				System.out.println(line);
 //				}
-				if (++i==400005) break;
+				if (++i==endline) break;
 								  } 
 		}catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
 public class LGD {
 
 	public static void main(String[] args) throws IOException {
-		File inputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/decoded.txt");
-		File outputFile = new File("D:/Usewod/Completed Usewod Counting/lgd/clean.txt");
-		File outputFile2 = new File("D:/Usewod/Completed Usewod Counting/lgd/rejects.txt");
+		File inputFile = new File(args[0]); //Ausgangsfile merge
+		File outputFile = new File(args[1]); //Outputfile für gefilterte Ergebnisse
+		File outputFile2 = new File(args[2]); //Outputfile für Ausschuss
 		FileOutputStream fos = new FileOutputStream(outputFile);
 		FileOutputStream fos2 = new FileOutputStream(outputFile2);
 		BufferedReader reader = null;
