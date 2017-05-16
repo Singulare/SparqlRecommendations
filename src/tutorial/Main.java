@@ -48,8 +48,8 @@ public class Main {
 			reader = new BufferedReader(new FileReader(inputFile));
 			while(reader.ready()) {
 				String line = reader.readLine();
-				Pattern pattern = Pattern.compile(".+\"GET\\s+\\/sparql/?\\?query=(\\S+)\\s?HTTP.+");
-				Pattern pattern1= Pattern.compile(".+\"GET\\s+\\/sparql\\?default-graph-uri=&query=(\\S+)\\s?HTTP.+");
+//				Pattern pattern = Pattern.compile(".+\"GET\\s+\\/sparql/?\\?query=(\\S+)\\s?HTTP.+");
+//				Pattern pattern1= Pattern.compile(".+\"GET\\s+\\/sparql\\?default-graph-uri=&query=(\\S+)\\s?HTTP.+");
 				Pattern pattern2 = Pattern.compile(".+\"GET\\s+(\\S+)\\s?HTTP.+");
 				//TODO Pattern1 scheint richtig zu sein, schmeiﬂt aber :
 //				Exception in thread "main" java.lang.IllegalStateException: No match found
@@ -58,8 +58,8 @@ public class Main {
 				//"GET /sparql?default-graph-uri=&query=SELECT
 				//"GET /sparql?default-graph-uri=&query=select
 				//.+\"GET\\s+\\/sparql\?default-graph-uri=&query=(\\S+)\\s?HTTP.+
-				Matcher matcher = pattern.matcher(line);
-				Matcher matcher1 = pattern1.matcher(line);
+//				Matcher matcher = pattern.matcher(line);
+//				Matcher matcher1 = pattern1.matcher(line);
 				Matcher matcher2 = pattern2.matcher(line);
 //				if (matcher.find()||matcher1.find()) {
 //					String query = "";

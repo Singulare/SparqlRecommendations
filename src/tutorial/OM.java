@@ -2,7 +2,6 @@ package tutorial;
 
 import java.awt.Toolkit;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,17 +40,6 @@ public class OM {
 		// Finally, the LineNumberReader object should be closed to prevent resource leak
 		lnr.close();
 		double i = 0;
-		boolean f = false;
-		boolean g = false;
-		boolean h = false;
-		boolean j = false;
-		boolean k = false;
-		boolean l = false;
-		boolean m = false;
-		boolean n = false;
-		boolean o = false;
-		
-		
 		try {
 			reader = new BufferedReader(new FileReader(inputFile));
 			while(reader.ready()) {
@@ -89,53 +78,11 @@ public class OM {
 				
 									
 				
-										if((i/linecount)>=0.10f && !f == true){	
-											System.out.println("10%");
-											f = true;
-										continue;
-										}
-										if((i/linecount)>=0.20f && !g ==true){
-											System.out.println("20%");
-											g = true;
-											continue;
-										}
-										if((i/linecount)>=0.30f && !h ==true){
-											System.out.println("30%");
-											h = true;
-											continue;
-										}
-										if((i/linecount)>=0.40f && !j ==true){
-											System.out.println("40%");
-											j = true;
-											continue;
-										}
-										if((i/linecount)>=0.50f && !k ==true){
-											System.out.println("50%");
-											k = true;
-											continue;
-										}
-										if((i/linecount)>=0.60f && !l ==true){
-											System.out.println("60%");
-											l = true;
-											continue;
-										}
-										if((i/linecount)>=0.70f && !m ==true){
-											System.out.println("70%");
-											m = true;
-											continue;
-										}
-										if((i/linecount)>=0.80f && !n ==true){
-											System.out.println("80%");
-											n = true;
-											continue;
-										}
-										if((i/linecount)>=0.90f && !o ==true){
-											System.out.println("90%");
-											o = true;
-											continue;
-										}
+				if(i%((long)linecount/10)==0) {
+					System.out.println(((int)i/linecount*100) + "% done at "+ (LocalDateTime.now()));
+				}
 										
-									}
+				}
 									
 								  
 				

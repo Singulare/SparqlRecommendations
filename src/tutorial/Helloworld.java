@@ -23,10 +23,11 @@ import org.apache.jena.sparql.algebra.Op;
 import org.apache.jena.sparql.algebra.OpVisitorBase;
 import org.apache.jena.sparql.algebra.OpWalker;
 import org.apache.jena.sparql.algebra.op.OpBGP;
-import org.apache.jena.sparql.algebra.op.OpSlice;
+
 
 public class Helloworld {
 
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		
 		Model m = ModelFactory.createDefaultModel();
@@ -38,7 +39,6 @@ public class Helloworld {
 		r.addProperty( p,  "hello world", XSDDatatype.XSDstring);
 		m.write( System.out, "N-Triples");
 		File inputFile = new File("D:/Usewod/Completed Usewod Counting/Usewod bio2rdf/merge.txt");
-		long i = 0;
 		BufferedReader reader = null;
 		BGPVisitor bgpVisitor = new BGPVisitor();
 		try {
