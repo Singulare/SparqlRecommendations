@@ -1,11 +1,11 @@
 Overview of all data bases
 
-						LGD			decoded		clean1		clean2
-Number of Lines			1929694		11854347	9395158		9395158		
-Number of SELECT		1639889		1639961		1639961		1608116				
-Number of ASK			25052		25138		25138		20933			
-Number of CONSTRUCT		266329		266329		266329		1687			
-Number of DESCRIBE		141			185			185			185		
+						LGD			decoded		clean1		clean2 		clean3
+Number of Lines			1929694		11854347	9395158		9395158		9380221
+Number of SELECT		1639889		1639961		1639961		1639934		1629751	
+Number of ASK			25052		25138		25138		25138		25138	
+Number of CONSTRUCT		266329		266329		266329		266329		266328	
+Number of DESCRIBE		141			185			185			185			181
 						
 						Bio2RDF
 Number of Lines  		192082
