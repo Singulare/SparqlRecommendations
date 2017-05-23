@@ -73,7 +73,7 @@ public class SWDF {
 								 }
 					//Prozentanzeige
 					if(i%((long)linecount/10)==0) {
-						System.out.println(((int)i/linecount*100) + "% done at "+ (LocalDateTime.now()));
+						System.out.println(((int)(i/linecount*100)) + "% done at "+ (LocalDateTime.now()));
 					}
 									  } 
 			}catch (FileNotFoundException e) {

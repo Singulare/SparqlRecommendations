@@ -44,9 +44,6 @@ public class Main {
 //				Pattern pattern1= Pattern.compile(".+\"GET\\s+\\/sparql\\?default-graph-uri=&query=(\\S+)\\s?HTTP.+");
 				Pattern pattern2 = Pattern.compile(".+\"GET\\s+(\\S+)\\s?HTTP.+");
 				//TODO Pattern1 scheint richtig zu sein, schmeiﬂt aber :
-//				Exception in thread "main" java.lang.IllegalStateException: No match found
-//				at java.util.regex.Matcher.group(Unknown Source)
-//				at tutorial.Main.main(Main.java:44)
 				//"GET /sparql?default-graph-uri=&query=SELECT
 				//"GET /sparql?default-graph-uri=&query=select
 				//.+\"GET\\s+\\/sparql\?default-graph-uri=&query=(\\S+)\\s?HTTP.+

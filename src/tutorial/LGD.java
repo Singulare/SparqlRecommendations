@@ -76,7 +76,7 @@ public class LGD {
 				
 				
 				if(i%(0.1f*linecount)==0) {
-					System.out.println(i/linecount*100 + "% done at "+ (LocalDateTime.now()));
+					System.out.println(((int)(i/linecount*100)) + "% done at "+ (LocalDateTime.now()));
 				}
 
 								  } 
