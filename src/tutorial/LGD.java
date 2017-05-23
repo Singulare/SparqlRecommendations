@@ -75,7 +75,7 @@ public class LGD {
 				//Prozentanzeige
 				
 				
-				if(i%(0.1f*linecount)==0) {
+				if(i%((long)linecount/100)==0) {
 					System.out.println(((int)(i/linecount*100)) + "% done at "+ (LocalDateTime.now()));
 				}
 

@@ -80,7 +80,7 @@ public class Bio2RDF {
 							writer.write(line);
 							writer.newLine();
 						}
-				if(i%((long)linecount/10)==0) {
+				if(i%((long)linecount/100)==0) {
 					System.out.println(((int)(i/linecount*100)) + "% done at "+ (LocalDateTime.now()));
 				}
 

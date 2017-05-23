@@ -60,7 +60,7 @@ public class linecounter {
 				w++;
 	
 			}
-			if(i%((long)linecount/10)==0) {
+			if(i%((long)linecount/100)==0) {
 				System.out.println(((int)(i/linecount*100)) + "% done at "+ (LocalDateTime.now()));
 			}
 		}System.out.println("Number of Lines in File : "+linecount+ "\n Number of Select : " +z+"\n Number of ASK: "+y+ "\n Number of Construct : " +x+"\n Number of Describe : "+w);
