@@ -42,52 +42,62 @@ public class LGD2 {
 			while(reader.ready()) {
 				i++;
 				String line = reader.readLine();
-				Pattern pattern = Pattern.compile(".*Select(.*?)\\s?}.+");
-				Pattern pattern1 = Pattern.compile(".*\\/sparql?query=SELECT(.*?)\\s?HTTP.+");
-				Pattern pattern2 = Pattern.compile(".*\\/sparql\\/\\?query=CONSTRUCT(.*?)");
-				Pattern pattern3 = Pattern.compile(".*\\/sparql\\?query=SELECT(.*?)");
+//				Pattern pattern = Pattern.compile(".*Select(.*?)\\s?}.+");
+				Pattern pattern0= Pattern.compile(".+ \"GET\\s+\\/sparql\\?query=(.*)"); //Pattern for ASK
+				Pattern pattern1 = Pattern.compile(".*\\/sparql?query=(.*?)\\s?HTTP.+");
+				Pattern pattern2 = Pattern.compile(".*\\/sparql\\/\\?query=(.*?)");
+				Pattern pattern3 = Pattern.compile(".*\\/sparql\\?query=(.*?)");
 				//0.0.0.113 - - [17/Jun/2011:23:09:47  0200] "GET /sparql/?query=CONSTRUCT
 				//Übrige Sachen decodieren/formatieren
-				Matcher matcher = pattern.matcher(line);
+//				Matcher matcher = pattern.matcher(line);
+				Matcher matcher0 = pattern0.matcher(line);
 				Matcher matcher1 = pattern1.matcher(line);
 				Matcher matcher2 = pattern2.matcher(line);
 				Matcher matcher3 = pattern3.matcher(line);
-				if (matcher.find()||matcher1.find()) {
+				if (matcher0.find()) {
 					String query = "";
 					try{
-					query = matcher.group(1);
+					query = matcher0.group(1);
 					}catch (IllegalStateException e) {
 						continue;
 					}
-					writer.write("Select" +query);
+					writer.write(query);
 					writer.newLine();
 									}
-				else if( matcher2.find()){
+				else if(matcher1.find()){
 					String query = "";
 					try{
-					query = matcher.group(1); //Theoretisch nicht nötig, da CONSTRUCT über mehrere Zeilen geht, aber zur sicherheit mit drin
+					query = matcher1.group(1); //Theoretisch nicht nötig, da CONSTRUCT über mehrere Zeilen geht, aber zur sicherheit mit drin
 					}catch (IllegalStateException e){
 						continue;
 					}
-					writer.write("Construct" +query);
+					writer.write(query);
 					writer.newLine();
 				
 				}
-				else if( matcher3.find()){
+				else if(matcher2.find()){
 					String query = "";
 					try{
-					query = matcher.group(1); 
+					query = matcher2.group(1); 
 					}catch (IllegalStateException e){
 						continue;
 					}
-					writer.write("Select" +query);
+					writer.write(query);
 					writer.newLine();
 				
 				}
-									else{
-										writer.write(line);
-										writer.newLine();
-									}
+				else if(matcher3.find()){
+					String query = "";
+					try{
+					query = matcher3.group(1); 
+					}catch (IllegalStateException e){
+						continue;
+					}
+					writer.write(query);
+					writer.newLine();} else{
+												writer.write(line);
+												writer.newLine();
+											}
 						
 				
 				if(i%((long)linecount/100)==0) {
