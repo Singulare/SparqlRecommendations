@@ -16,18 +16,18 @@ import java.util.regex.Pattern;
 
 
 
-public class DBP {
+public class DBP2 {
 
-	public static void main(String[] args) throws IOException {
-		System.out.println("Program startet at "+LocalDateTime.now());
+	public static void main(String[] args) throws  IOException {
 		File inputFile = new File(args[0]); //Ausgangsfile merge
 		File outputFile = new File(args[1]); //Outputfile für gefilterte Ergebnisse
-		File outputFile2 = new File(args[2]); //Outputfile für Ausschuss
+		File outputFile2 = new File(args[2]); //Outputfile for rejects
+		
 		FileOutputStream fos = new FileOutputStream(outputFile);
 		FileOutputStream fos2 = new FileOutputStream(outputFile2);
 		BufferedReader reader = null;
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
-		BufferedWriter writer2 = new BufferedWriter(new OutputStreamWriter(fos2));
+		BufferedWriter writer2 = new BufferedWriter (new OutputStreamWriter(fos2));
 		long starttime = System.nanoTime();
 		LineNumberReader  lnr = new LineNumberReader(new FileReader(inputFile));
 		lnr.skip(Long.MAX_VALUE);
@@ -35,42 +35,52 @@ public class DBP {
 		// Finally, the LineNumberReader object should be closed to prevent resource leak
 		lnr.close();
 		double i = 0;
+		
 		System.out.println("File read in completed, execution started at "+LocalDateTime.now());
 		try {
 			reader = new BufferedReader(new FileReader(inputFile));
 			while(reader.ready()) {
 				i++;
 				String line = reader.readLine();
-				Pattern pattern = Pattern.compile("(.*)\\s?HTTP.*");
-				Pattern pattern1 = Pattern.compile(".?PREFIX.*");
-				Pattern pattern2 = Pattern.compile(".?0.0.0.0.*");
-				Matcher matcher = pattern.matcher(line);
+				Pattern pattern0= Pattern.compile(".*query=(.*)"); //allgemeiner Fall für codeschnipsel
+				Pattern pattern1= Pattern.compile(".?0.0.0.0.*"); //Pattern für restliche 0.0.0.0 extraktion
+				Pattern pattern2= Pattern.compile(".*>\\s(SELECT.*)"); //Prefixe vor Slect anfragen raussammeln
+				Matcher matcher0 = pattern0.matcher(line);
 				Matcher matcher1 = pattern1.matcher(line);
 				Matcher matcher2 = pattern2.matcher(line);
-				//zuerst gewünschte Pattern rausmatchen
-				if (matcher.find()) {
+
+				if (matcher0.find()) {
 					String query = "";
-					try {
-						query = matcher.group(1);
-					} catch (IllegalStateException e) { //catch exception for some illegal program cancels
+					try{
+					query = matcher0.group(1);
+					}catch (IllegalStateException e) {
 						continue;
 					}
-					//write to output file
 					writer.write(query);
 					writer.newLine();
+									}
+				if (matcher2.find()) {
+					String query = "";
+					try{
+					query = matcher2.group(1);
+					}catch (IllegalStateException e) {
+						continue;
 					}
-				//dann ungewollte lines raus (PREFIX und 0.0.0.0)
-						else  if(matcher1.find()||matcher2.find()){ 
-							writer2.write(line);
-							writer2.newLine();							 
-							 }else
-								 //rest bleibt drin
-							 {
-								writer.write(line);
-								writer.newLine();
-							 }
-				//Prozentanzeige
-				
+					writer.write(query);
+					writer.newLine();
+									}
+
+				else if(matcher1.find()){
+					
+						writer2.write(line);
+						writer2.newLine();
+					
+					}
+				else{
+					writer.write(line);
+					writer.newLine();
+					}
+						
 				
 				if(i%((long)linecount/100)==0) {
 					System.out.println(((int)(i/linecount*100)) + "% done at "+ (LocalDateTime.now()));
@@ -88,18 +98,21 @@ public class DBP {
 					reader.close();
 					writer.close();
 					writer2.close();
-				} catch (IOException e) {
+					} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			
+			
 		}
+		
 		long endtime = System.nanoTime();
 		long duration = ((endtime - starttime)/1000000000);
-		System.out.println("Done collecting!"+ " this took " + duration+ " seconds and was finished at " + LocalDateTime.now());
+		System.out.println("Done collecting!"+ " this took " + duration+ " seconds.");
 		
 	}
+	
 
 		
 	
 	}
-
