@@ -35,30 +35,30 @@ Number of ASK			77077			78774		66943		45794
 Number of Construct 	17414			17487		17107		15932
 Number of Describe 		5672			5713		3428		2518
 
-						DBP 3-4			decoded			clean1
-Number of Lines 		15114251		34011026		27054511
-Number of Select 		2480983			2472328			1987082
-Number of ASK			210286			213684			177336
-Number of Construct 	51688			51982			51798
-Number of Describe 		15505			15530			9073
+						DBP 3-4			decoded			clean1			clean2		clean3
+Number of Lines 		15114251		34011026		27054511		14655399	14655361
+Number of Select 		2480983			2472328			1987082			2057667		2057628
+Number of ASK			210286			213684			177336			124622		124622
+Number of Construct 	51688			51982			51798			49219		49219
+Number of Describe 		15505			15530			9073			7574		7574
 
-						DBP 3-5-1
-Number of Lines 		3182390	
-Number of Select 		2948783
-Number of ASK			181499
-Number of Construct 	20116
-Number of Describe 		3024
+						DBP 3-5-1		decoded			clean1			clean2		clean3
+Number of Lines 		3182390			26330687		19286347		19617237	19616435	
+Number of Select 		2948783			2958875			2625050			2996489		2995670
+Number of ASK			181499			185735			56830			57387		57387
+Number of Construct 	20116			20622			19919			19954		19973
+Number of Describe 		3024			3024			2457			2457		2455
 
-						DBP 3-6
-Number of Lines 		8429868
-Number of Select 		7994806
-Number of ASK			368414
-Number of Construct 	11060
-Number of Describe 		39917
+						DBP 3-6			decoded			clean1			clean2		clean3
+Number of Lines 		8429868			82764127		61225800		25734583	26693663
+Number of Select 		7994806			8017053			12295133			3768891		4478663
+Number of ASK			368414			375205			710845			343647		499837
+Number of Construct 	11060			12517			15712			3980		4709
+Number of Describe 		39917			39917			79000			17622		26409
 
-						DBP 3-8
-Number of Lines 		12044166	
-Number of Select 		11360418
-Number of ASK			272364
-Number of Construct 	166106
-Number of Describe 		38376				
+						DBP 3-8			decoded
+Number of Lines 		12044166		140354774
+Number of Select 		11360418		11471661
+Number of ASK			272364			285554
+Number of Construct 	166106			178264
+Number of Describe 		38376			38378		
